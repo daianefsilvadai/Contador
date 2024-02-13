@@ -1,30 +1,52 @@
 import React, { useState } from "react";
+import "./Contador.css";
+import papaLeguas from "./papa-leguas.png";
 
+//Hook: tem funcionalidades que permite  manipulação de diversos recurso do react,
+//em um componente funcional  exemplo: useState  / hook trabalha com estados, e os estados são os que armazenam valores
 function Contador() {
   //inicializando o estado do contador com o valor zero
-  const [contador, setContador] = useState(0);
+  const [numero, setNumero] = useState(0);
 
   //função para incrementar o contador
-  const contMais = () => {
-    setContador(contador + 1);
+  const Adicionar = () => {
+    if (numero < 20) {
+      setNumero(numero + 1);
+    }
   };
 
   //função para decrementar o contador
-  const contMenos = () => {
-    setContador(contador - 1);
+  const Remover = () => {
+    if (numero > 0) {
+      setNumero(numero - 1);
+    }
   };
 
   //função de resetar o contador
-  const resetarContador = () => {
-    setContador(0);
+  const Limpar = () => {
+    setNumero(0);
   };
 
   return (
     <>
-      <h1>Olá, sou o Contador: {contador}</h1>
-      <button onClick={contMais}>+</button>
-      <button onClick={contMenos}>-</button>
-      <button onClick={resetarContador}>Reset</button>
+      <section className="contador">
+        <h1 className="numero">{numero}</h1>
+        <div className="boxButton">
+          <button id="btn1" onClick={Adicionar}>
+            +
+          </button>
+          <button id="btn2" onClick={Remover}>
+            -
+          </button>
+          <button id="btn3" onClick={Limpar}>
+            Reset
+          </button>
+        </div>
+
+        <section>
+          <img className="img-Leguas" src={papaLeguas} alt="papaLeguas" />
+        </section>
+      </section>
     </>
   );
 }
